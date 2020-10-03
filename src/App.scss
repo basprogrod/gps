@@ -1,0 +1,19 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
