@@ -14,7 +14,7 @@ export default (whom) => {
 		tid = setInterval(async () => {
 			try {
 				const data = await axios.get(`${DB_URI}/${whom}.json`)
-				console.log(whom, data)
+				// console.log(whom, data)
 				setState({
 					...state,
 					...data.data,

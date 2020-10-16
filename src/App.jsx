@@ -17,7 +17,7 @@ function App() {
   const [state, setState] = useState({
     pass: ''
   })
-  console.log("App -> state", state, PASS)
+  // console.log("App -> state", state, PASS)
 
   const [d, setD] = useState(0)
 

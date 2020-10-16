@@ -9,7 +9,7 @@ export default (whom, deps = []) => {
 	const [state, setState] = useState({
 		lat: 0,
 		lon: 0,
-	})
+	}, [])
 	
 	const onError = (e) => {
 		if (e.code === 1) {
@@ -26,7 +26,7 @@ export default (whom, deps = []) => {
 	}
 
 	const onChangePosition = (e) => {
-		console.log("TCL: onChangePosition -> e", e.coords)
+		// console.log("TCL: onChangePosition -> e", e.coords)
 
 		const { latitude, longitude } = e.coords
 		const data = JSON.stringify({ lat: latitude, lon: longitude })
