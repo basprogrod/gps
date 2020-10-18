@@ -4,7 +4,7 @@ import { DB_URI, REFRESH_INTERVAL } from "../constants/config"
 
 let tid
 
-export default (whom) => {
+export default (who) => {
 	const [state, setState] = useState({
 		lat: 0,
 		lon: 0,
@@ -13,8 +13,8 @@ export default (whom) => {
 	const getData = () => {
 		tid = setInterval(async () => {
 			try {
-				const data = await axios.get(`${DB_URI}/${whom}.json`)
-				// console.log(whom, data)
+				const data = await axios.get(`${DB_URI}/${who}.json`)
+				// console.log(who, data)
 				setState({
 					...state,
 					...data.data,
@@ -29,8 +29,8 @@ export default (whom) => {
 	}
 
 	useEffect(() => {
-		getData()
-		return () => clearInterval(tid)
+		// getData()
+		// return () => clearInterval(tid)
 	}, [])
 
 
