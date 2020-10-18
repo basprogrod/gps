@@ -1,5 +1,33 @@
-import styled from 'styled-components'
+.target {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(255, 97, 49);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 25px;
+  box-shadow: 0 15px 20px #0002, inset 0 5px 5px #fff5;
 
-export default styled.div`
-  color: '';
-`
+  &.closely {
+    animation: puls 0.5s infinite alternate;
+  }
+
+  &.achieved {
+    background-color: rgb(0, 192, 74);
+  }
+
+  small {
+    font-size: 14px;
+  }
+}
+
+@keyframes puls {
+  from { background-color: rgb(255, 97, 49); }             /* от: left: 0px */
+  to { background-color: rgb(0, 192, 74); }
+}
+

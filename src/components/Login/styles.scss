@@ -1,0 +1,29 @@
+.code {
+  padding: 15px;
+  background-color: rgba(153, 149, 146, 0.322);
+  border-radius: 15px;
+  margin-top: 25px;
+  color: #fff;
+
+  &__input {
+    margin-top: 5px;
+    border: none;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 30px;
+    box-shadow: 0 15px 20px #0002;
+    padding: 0 10px;
+    font-weight: 700;
+    color: #323232;
+  }
+
+  &__btn {
+    background-color: rgb(73, 67, 68);
+    color: #fff;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    margin-left: 4px;
+    box-shadow: 0 15px 20px #0002;
+  }
+}

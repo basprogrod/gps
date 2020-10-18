@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './styles.scss'
 
 const Login = ({ handleLogin }) => {
   const [value, setValue] = useState('')
@@ -14,10 +15,10 @@ const Login = ({ handleLogin }) => {
   }
   
   return (
-    <form action="/" onSubmit={handleSubmit}>
-      <div>пароль</div>
-      <input type="text" value={value} onChange={handleChange}/>
-      <input type="submit"/>
+    <form className="code" action="/" onSubmit={handleSubmit}>
+      <div>Код</div>
+      <input className="code__input" type="text" value={value} onChange={handleChange}/>
+      <input className="code__btn" type="submit"/>
     </form>
   )
 }
