@@ -7,6 +7,7 @@ import Admin from './containers/Admin/component';
 import Login from './components/Login/component';
 import User from './containers/User/component';
 import { PASS } from './constants/config'
+import AppState from './contexts/AppContext/AppState';
 
 
 let TARGET = '53.849537, 27.475395'
@@ -67,7 +68,8 @@ function App() {
 
 
   return (
-    <div className="App" on={() => {}}>
+    <AppState>
+       <div className="App" on={() => {}}>
       <header className="header">
         <Login handleLogin={handleLogin}/>
       </header>
@@ -79,11 +81,12 @@ function App() {
             : <User />
         }
 
-{/* <div>Расстояние</div>
-<div>{d} м</div> */}
+        {/* <div>Расстояние</div>
+        <div>{d} м</div> */}
       </main>
       
     </div>
+    </AppState>
   )
 }
 

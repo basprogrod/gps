@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import pt from 'prop-types'
 import './styles.scss'
 import useDistanceToTarget from '../../hooks/useDistanceToTarget'
 import { LIMIT, CLOSELY } from '../../constants/config'
+import AppContext from '../../contexts/AppContext/AppContext'
 
 const Target = ({ target, lat, lon }) => {
+
+  // const ctx = useContext(AppContext)
+  // console.log("TCL: Target -> ctx", ctx)
 
   const distance = useDistanceToTarget(target, lat, lon )
 
