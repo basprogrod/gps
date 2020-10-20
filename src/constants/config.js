@@ -21,8 +21,8 @@ export const targets = [
   // SECOND_TARGET,
   // THIRD_TARGET,
   FORTH_TARGET,
-  '53.893212, 27.567520',
-  '53.849303, 27.478452'
+  // '53.893212, 27.567520',
+  '53.849303, 27.478452',
 ]
 
 export const LIMIT = 20

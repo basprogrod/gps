@@ -1,8 +1,17 @@
-// import {HIDE_ALERT, SHOW_ALERT} from '../types'
+import { HIDE_MODAL, SHOW_MODAL } from "../../types/types"
+
 
 const handlers = {
-  // [SHOW_ALERT]: (state, {payload}) => ({...payload, visible: true}),
-  // [HIDE_ALERT]: state => ({...state, visible: false}),
+  [SHOW_MODAL]: (state, {payload}) => ({
+    ...state,
+    isShowModal: true,
+    element: payload,
+  }),
+  [HIDE_MODAL]: state => ({
+    ...state,
+    isShowModal: false,
+    element: '',
+  }),
   DEFAULT: state => state
 }
 

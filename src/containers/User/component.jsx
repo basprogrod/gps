@@ -9,7 +9,7 @@ import isAchieveTarget from '../../utils/isAchieveTarget'
 
 const User = () => {
   const {lat, lon} = useCoords(USER) // coords of user
-  console.log("TCL: User -> lat, lon", lat, lon)
+  // console.log("TCL: User -> lat, lon", lat, lon) 
   // const [userLat, userLon] = usePosition(ADMIN) // coords of admin
   // const distance = useDistance(lat, lon, userLat, userLon)
   // const distanceUntilTarget = useTargetCoords(FIRST_TARGET, lat, lon)

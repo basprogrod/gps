@@ -1,28 +1,30 @@
 import React, { useReducer } from 'react'
 import AppContext from './AppContext'
 import appReducer from './appReducer'
-import { HIDE_ALERT, SHOW_ALERT } from '../../types/types'
+import { HIDE_MODAL, SHOW_MODAL } from '../../types/types'
 
 const initialState = {
-  kek: 'lol',
+  isShowModal: false,
+  element: '',
 }
 
 const AppState = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState)
 
-  const show = (text, type = 'warning') => {
+  const handleModalShow = (element) => {
     dispatch({
-      type: SHOW_ALERT,
-      payload: {text, type}
+      type: SHOW_MODAL,
+      payload: element,
     })
   }
 
-  const hide = () => dispatch({type: HIDE_ALERT})
+  const handleModalClose = () => dispatch({type: HIDE_MODAL})
 
   return (
     <AppContext.Provider value={{
       ...state,
-      show,
+      handleModalShow,
+      handleModalClose,
     }}>
       {children}
     </AppContext.Provider>
