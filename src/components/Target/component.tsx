@@ -5,20 +5,28 @@ import useDistanceToTarget from '../../hooks/useDistanceToTarget'
 import { LIMIT, CLOSELY } from '../../constants/config'
 import message from '../../assets/svg/email.svg'
 import AppContext from '../../contexts/AppContext/AppContext'
+import Popup from '../Popup'
+import elements from '../../containers/ModalWindow/elements'
 
-const Target = ({ target, lat, lon }) => {
+interface ITargetProps {
+  coords: string
+  lat: any
+  lon: any
+}
 
-  const { handleModalShow } = useContext(AppContext)
-  // console.log("TCL: Target -> ctx", ctx)
+const Target = ({ coords, lat, lon }: ITargetProps) => {
+console.log("TCL: Target -> target", coords)
 
-  const distance = useDistanceToTarget(target, lat, lon )
+  const { handleModalShow } = useContext(AppContext) as any
+
+  const distance = useDistanceToTarget(coords, lat, lon )
 
   const isAchieve = distance < LIMIT
   const isClosely = distance < CLOSELY && distance > LIMIT
 
   const handleClick = () => {
-    // if(!isAchieve) return null
-    handleModalShow(<div>4398u346943</div>)
+    if(!isAchieve) return null
+    handleModalShow(elements.types.TARGET_POPUP)
 
   }
 
@@ -28,7 +36,7 @@ const Target = ({ target, lat, lon }) => {
       onClick={handleClick}
     >
       {
-        !isAchieve
+        isAchieve
           ?  (
             <img className="target__img" src={message} alt=""/>
           )
@@ -52,15 +60,15 @@ const Target = ({ target, lat, lon }) => {
   )
 }
 
-Target.propTypes = {
-  target: pt.string,
-  lat: pt.number,
-  lon: pt.number,
-}
-Target.defaultProps = {
-  target: '0, 0',
-  lat: 0,
-  lon: 0,
-}
+// Target.propTypes = {
+//   target: pt.string,
+//   lat: pt.number,
+//   lon: pt.number,
+// }
+// Target.defaultProps = {
+//   target: '0, 0',
+//   lat: 0,
+//   lon: 0,
+// }
 
 export default Target

@@ -1,17 +1,22 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { DB_URI, REFRESH_INTERVAL, _ } from '../constants/config'
+import { DB_URL, REFRESH_INTERVAL, _ } from '../constants/config'
+
+window.axi = axios
+window.ax = (val, target) => {
+	return axios.post(`${DB_URL}/${val}.json`, JSON.stringify(target))
+}
 
 let id
 
-navigator.geolocation.watchPosition = (cb) => {
-	let latitude = 53.8928896, longitude = 27.5677184
-	setInterval((e) => {
-		latitude = +(+latitude + 0.00001).toFixed(7)
-		longitude = +(+longitude + 0.00001).toFixed(7)
-		cb({coords: { latitude, longitude } })
-	}, 1000)
-}
+// navigator.geolocation.watchPosition = (cb) => {
+// 	let latitude = 53.8928896, longitude = 27.5677184
+// 	setInterval((e) => {
+// 		latitude = +(+latitude + 0.00001).toFixed(7)
+// 		longitude = +(+longitude + 0.00001).toFixed(7)
+// 		cb({coords: { latitude, longitude } })
+// 	}, 1000)
+// }
 
 export default (who, deps = []) => {
 
@@ -41,9 +46,9 @@ export default (who, deps = []) => {
 			lon: e.coords.longitude,
 		}
 		setState(coords)
-		// const { latitude, longitude } = e.coords
-		// const data = JSON.stringify({ lat: latitude, lon: longitude })
-		// axios.put(`${DB_URI}/${who}.json`, data)
+		const { latitude, longitude } = e.coords
+		const data = JSON.stringify({ lat: latitude, lon: longitude })
+		// axios.put(`${DB_URL}/${who}.json`, data)
 
 
 	}
@@ -55,7 +60,7 @@ export default (who, deps = []) => {
 			enableHighAccuracy: false,
 			timeout: REFRESH_INTERVAL,
 			maximumAge: 0
-			}
+		}
 	
 		id = navigator.geolocation.watchPosition(onChangePosition, _, options)
 

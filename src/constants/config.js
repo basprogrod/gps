@@ -1,4 +1,4 @@
-export const DB_URI = 'https://gee-gps.firebaseio.com'
+export const DB_URL = 'https://gee-gps.firebaseio.com'
 
 export const REFRESH_INTERVAL = 5000
 
@@ -25,6 +25,6 @@ export const targets = [
   '53.849303, 27.478452',
 ]
 
-export const LIMIT = 20
+export const LIMIT = 45
 export const CLOSELY = 50
 //53.905292, 27.558693

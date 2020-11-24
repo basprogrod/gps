@@ -1,17 +1,31 @@
-import { HIDE_MODAL, SHOW_MODAL } from "../../types/types"
+import { HIDE_MODAL, SHOW_MODAL, net } from "../../types/types"
 
+const { SET_TARGETS, SET_IDS } = net
 
 const handlers = {
-  [SHOW_MODAL]: (state, {payload}) => ({
+  [SHOW_MODAL]: (state, { payload }) => ({
     ...state,
     isShowModal: true,
-    element: payload,
+    elementType: payload,
   }),
-  [HIDE_MODAL]: state => ({
+  [HIDE_MODAL]: (state) => ({
     ...state,
     isShowModal: false,
-    element: '',
+    elementType: '',
   }),
+  [SET_TARGETS]: (state, { payload }) => {
+    return {
+      ...state,
+      targets: payload,
+    }
+  },
+  [SET_IDS]: (state, { payload }) => {
+    return {
+      ...state,
+      ids: payload,
+    }
+  },
+
   DEFAULT: state => state
 }
 

@@ -1,0 +1,45 @@
+.create-target-form {
+  position: relative;
+  background-color: rgb(223, 223, 223);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 5px 10px #0003;
+  width: 350px;
+
+  &__inps {
+    width: 100%;
+    input {
+      width: 100%;
+    }
+  }
+
+  input {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    box-shadow: 0 15px 20px #0002;
+    padding: 0 10px;
+    font-weight: 700;
+    color: #323232;
+  }
+
+  input[type="submit"] {
+    background-color: #323232;
+    color: #cacaca;
+    width: 150px;
+  }
+
+  &__descr {
+    width: 100%;
+    margin-bottom: 15px;
+    textarea {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 15px 20px #0002;
+      padding: 0 10px;
+      font-weight: 700;
+      color: #323232;
+    }
+  }
+}

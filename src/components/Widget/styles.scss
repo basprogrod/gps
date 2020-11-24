@@ -1,0 +1,15 @@
+.widget {
+  width: 32%;
+  margin: 0px 2px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgb(153, 153, 153);
+  font-size: 12px;
+  border: 1px solid;
+  box-shadow: 0 5px 10px #0002;
+  color: #fff;
+
+  &__value {
+    font-weight: 800;
+  }
+}

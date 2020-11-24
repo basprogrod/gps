@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { DB_URI, REFRESH_INTERVAL } from "../constants/config"
+import { DB_URL, REFRESH_INTERVAL } from "../constants/config"
 
 let tid
 
@@ -13,7 +13,7 @@ export default (who) => {
 	const getData = () => {
 		tid = setInterval(async () => {
 			try {
-				const data = await axios.get(`${DB_URI}/${who}.json`)
+				const data = await axios.get(`${DB_URL}/${who}.json`)
 				// console.log(who, data)
 				setState({
 					...state,

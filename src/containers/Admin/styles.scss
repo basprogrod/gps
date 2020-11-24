@@ -1,10 +1,19 @@
-.title  {
-  text-align: center;
-  display: flex;
+.container {
   width: 100%;
-  justify-content: space-around;
+  max-width: 375px;
+  padding: 0px 10px;
+}
+
+.widgets {
+  display: flex;
   flex-wrap: wrap;
-  span {
-    font-weight: 600;
-  }
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.dashboard {
+  padding: 5px 10px;
+  background-color: rgb(160, 160, 160);
+  border-radius: 8px;
+
 }

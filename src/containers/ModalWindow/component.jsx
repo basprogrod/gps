@@ -4,16 +4,27 @@ import { createPortal } from 'react-dom'
 import './styles.scss'
 import { useContext } from 'react'
 import AppContext from '../../contexts/AppContext/AppContext'
+import elements from './elements'
 
 const ModalWindow = () => {
-  const { element, handleModalClose } = useContext(AppContext)
+  const { elementType, handleModalClose } = useContext(AppContext)
+
+  const handleClick = (e) => {
+    if (e.target.dataset.modal) {
+      handleModalClose()
+    }
+  }
+
+  const { Component, props } = elements[elementType]
+
   const render = () => {
     return (
-      <div className="modal-window" onClick={handleModalClose}>
-        {element}
+      <div data-modal="true" className="modal-window" onClick={handleClick}>
+        <Component {...props} />
       </div>
     )
   }
+
   return createPortal(render(), document.getElementById('modal'))
 }
 

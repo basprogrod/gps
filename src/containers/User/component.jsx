@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Target from '../../components/Target/component'
-import { ADMIN, FIRST_TARGET, LIMIT, SECOND_TARGET, targets, THIRD_TARGET, USER } from '../../constants/config'
+import { ADMIN, FIRST_TARGET, LIMIT, SECOND_TARGET, /* targets, */ THIRD_TARGET, USER } from '../../constants/config'
 import useCoords from '../../hooks/useCoords'
 import useDistance from '../../hooks/useDistance'
 import usePosition from '../../hooks/usePosition'
 import useTargetCoords from '../../hooks/useDistanceToTarget'
 import isAchieveTarget from '../../utils/isAchieveTarget'
 
+import './styles.scss'
+import AppContext from '../../contexts/AppContext/AppContext'
+
 const User = () => {
+  const { targets, handleGetTargets } = useContext(AppContext)
+  console.log("TCL: User -> targets", targets)
   const {lat, lon} = useCoords(USER) // coords of user
   // console.log("TCL: User -> lat, lon", lat, lon) 
   // const [userLat, userLon] = usePosition(ADMIN) // coords of admin
@@ -19,12 +24,16 @@ const User = () => {
   //   // setState(isAchieve)
   // }, [lat, lon])
 
+  useEffect(() => {
+    handleGetTargets()
+  }, [])
+
 
   return (
-     <div className="title">
+     <div className="targets">
        {
          targets.map((target) => (
-           <Target target={target} lat={lat} lon={lon} />
+           <Target key={target.coords} coords={target.coords} lat={lat} lon={lon} />
          ))
        }
       {/* <span>Distance to Target:</span>
