@@ -1,4 +1,4 @@
-import { HIDE_MODAL, SHOW_MODAL, net } from "../../types/types"
+import { HIDE_MODAL, SHOW_MODAL, net, ui } from "../../types/types"
 
 const { SET_TARGETS, SET_IDS } = net
 
@@ -23,6 +23,12 @@ const handlers = {
     return {
       ...state,
       ids: payload,
+    }
+  },
+  [ui.SET_TARGET_TEXT]: (state, { payload }) => {
+    return {
+      ...state,
+      targetText: payload,
     }
   },
 

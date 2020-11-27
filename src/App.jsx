@@ -6,7 +6,7 @@ import getDistance from './utils/getDistance';
 import Admin from './containers/Admin/component';
 import Login from './components/Login/component';
 import User from './containers/User/component';
-import { PASS } from './constants/config'
+import { PASS, ADMIN_PASS } from './constants/config'
 import AppState from './contexts/AppContext/AppState';
 import ModalWindow from './containers/ModalWindow/component';
 import { useContext } from 'react';
@@ -29,18 +29,23 @@ function App() {
         {
           context.isShowModal && <ModalWindow />
         }
-        <div className="App" on={() => {}}>
-        <header className="header">
-          <Login handleLogin={handleLogin}/>
-        </header>
-        <main className="main">
+        <div className="App" onClick={() => {}}>
           {
-            state.pass === PASS
-              ? <Admin />
-              : <User />
+            state.pass !== PASS && state.pass !== ADMIN_PASS && (
+              <header className="header">
+                <Login pass={state.pass} handleLogin={handleLogin}/>
+              </header>
+            )
           }
-        </main>
-        
+
+          <main className="main">
+            {
+              state.pass === PASS && <User />
+            }
+            {
+              state.pass === ADMIN_PASS && <Admin />
+            }
+          </main>
       </div>
     </>
   )

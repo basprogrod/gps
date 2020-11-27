@@ -4,7 +4,8 @@ export const REFRESH_INTERVAL = 5000
 
 export const _ = () => {}
 
-export const PASS = 'k'
+export const PASS = 'пгни'
+export const ADMIN_PASS = 'k'
 
 export const ADMIN = 'kek'
 

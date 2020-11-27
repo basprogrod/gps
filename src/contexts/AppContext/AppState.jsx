@@ -1,13 +1,14 @@
 import React, { useReducer } from 'react'
 import AppContext from './AppContext'
 import appReducer from './appReducer'
-import { HIDE_MODAL, net, SHOW_MODAL } from '../../types/types'
+import { HIDE_MODAL, net, SHOW_MODAL, ui } from '../../types/types'
 import axios from 'axios'
 import { DB_URL } from '../../constants/config'
 
 const initialState = {
   isShowModal: false,
   elementType: 'TARGET_CREATION',
+  targetText: '',
   targets: [],
   ids: {},
 }
@@ -15,7 +16,11 @@ const initialState = {
 const AppState = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState)
 
-  const handleModalShow = (element) => {
+  const handleModalShow = (element, data = '') => {
+    dispatch({
+      type: ui.SET_TARGET_TEXT,
+      payload: data,
+    })
     dispatch({
       type: SHOW_MODAL,
       payload: element,
