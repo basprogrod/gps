@@ -10,12 +10,12 @@ import elements from '../../containers/ModalWindow/elements'
 
 interface ITargetProps {
   coords: string
+  descr: string
   lat: any
   lon: any
 }
 
-const Target = ({ coords, lat, lon }: ITargetProps) => {
-console.log("TCL: Target -> target", coords)
+const Target = ({ coords, lat, lon, descr }: ITargetProps) => {
 
   const { handleModalShow } = useContext(AppContext) as any
 
@@ -26,7 +26,7 @@ console.log("TCL: Target -> target", coords)
 
   const handleClick = () => {
     if(!isAchieve) return null
-    handleModalShow(elements.types.TARGET_POPUP)
+    handleModalShow(elements.types.TARGET_POPUP, descr)
 
   }
 

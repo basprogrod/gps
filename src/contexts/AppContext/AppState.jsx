@@ -13,17 +13,22 @@ const initialState = {
   ids: {},
 }
 
+
+
 const AppState = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState)
 
-  const handleModalShow = (element, data = '') => {
-    dispatch({
-      type: ui.SET_TARGET_TEXT,
-      payload: data,
-    })
+  const handleModalShow = () => {
     dispatch({
       type: SHOW_MODAL,
       payload: element,
+    })
+  }
+
+  const heandleSetTargetDescr = () => {
+    dispatch({
+      type: ui.SET_TARGET_TEXT,
+      payload: data,
     })
   }
 

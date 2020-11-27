@@ -12,7 +12,6 @@ import AppContext from '../../contexts/AppContext/AppContext'
 
 const User = () => {
   const { targets, handleGetTargets } = useContext(AppContext)
-  console.log("TCL: User -> targets", targets)
   const {lat, lon} = useCoords(USER) // coords of user
   // console.log("TCL: User -> lat, lon", lat, lon) 
   // const [userLat, userLon] = usePosition(ADMIN) // coords of admin
@@ -32,9 +31,11 @@ const User = () => {
   return (
      <div className="targets">
        {
-         targets.map((target) => (
-           <Target key={target.coords} coords={target.coords} lat={lat} lon={lon} />
-         ))
+         targets.map((target) => {
+           return (
+            <Target key={target.coords} coords={target.coords} descr={target.descr} lat={lat} lon={lon} />
+          )
+         })
        }
       {/* <span>Distance to Target:</span>
       <div>{distanceUntilTarget} m</div> */}

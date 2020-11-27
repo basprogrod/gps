@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import pt from 'prop-types'
-import './styles.scss'
 import AppContext from '../../contexts/AppContext/AppContext'
 
+import './styles.scss'
+
 const Popup = () => {
-  const { targetText } = useContext(AppContext)
-  console.log("TCL ~ file: component.jsx ~ line 8 ~ Popup ~ targetText", targetText)
+  const { targetText } = useContext(AppContext) as any
+
   return (
     <div className="popup">
       <div className="popup__block">
@@ -16,8 +17,5 @@ const Popup = () => {
     </div>
   )
 }
-
-Popup.propTypes = {}
-Popup.defaultProps = {}
 
 export default Popup
