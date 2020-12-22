@@ -4,6 +4,7 @@ import pt from 'prop-types'
 import './styles.scss'
 import { useState } from 'react'
 import AppContext from '../../contexts/AppContext/AppContext'
+import { IAppState } from '../../types/types'
 
 interface Props {
   kek: string
@@ -11,7 +12,7 @@ interface Props {
 
 const CreateTargetFormPopup: React.FC<Props> = (props) => {
 
-  const { handleCreateTarget } = useContext(AppContext) as any
+  const { handleCreateTarget } = useContext(AppContext) as IAppState
 
   const [state, setState] = useState({
     coords: '',

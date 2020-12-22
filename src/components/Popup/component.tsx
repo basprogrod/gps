@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import pt from 'prop-types'
 import AppContext from '../../contexts/AppContext/AppContext'
+import { IAppState } from '../../types/types'
 
 import './styles.scss'
 
 const Popup = () => {
-  const { targetText } = useContext(AppContext) as any
+  const { targetText, targetImg } = useContext(AppContext) as IAppState
 
   return (
     <div className="popup">
@@ -13,6 +13,7 @@ const Popup = () => {
         <p>
           {targetText}
         </p>
+        <img src={targetImg} alt=""/>
       </div>
     </div>
   )

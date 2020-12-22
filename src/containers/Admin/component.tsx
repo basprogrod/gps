@@ -7,13 +7,14 @@ import AppContext from '../../contexts/AppContext/AppContext'
 import useCoords from '../../hooks/useCoords'
 import useDistance from '../../hooks/useDistance'
 import usePosition from '../../hooks/usePosition'
+import { IAppState } from '../../types/types'
 import elements from '../ModalWindow/elements'
 
 import './styles.scss'
 
 const Admin = () => {
 
-  const {targets, handleGetTargets, handleModalShow } = useContext(AppContext) as any
+  const {targets, handleGetTargets, handleModalShow } = useContext(AppContext) as IAppState
   console.log("TCL: Admin -> targets", targets)
   
   const {lat, lon} = useCoords(ADMIN)

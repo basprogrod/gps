@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import pt from 'prop-types'
 import './styles.scss'
 import useDistanceToTarget from '../../hooks/useDistanceToTarget'
@@ -7,17 +7,21 @@ import message from '../../assets/svg/email.svg'
 import AppContext from '../../contexts/AppContext/AppContext'
 import Popup from '../Popup'
 import elements from '../../containers/ModalWindow/elements'
+import { Context } from 'vm'
+import { IAppState } from '../../types/types'
 
 interface ITargetProps {
   coords: string
   descr: string
   lat: any
   lon: any
+  img: string,
+  id: string,
 }
 
-const Target = ({ coords, lat, lon, descr }: ITargetProps) => {
+const Target = ({ coords, lat, lon, descr, img, id }: ITargetProps) => {
 
-  const { handleModalShow } = useContext(AppContext) as any
+  const { handleModalShow, handleSetTargetDescr, handleTargetAchievment } = useContext(AppContext) as IAppState
 
   const distance = useDistanceToTarget(coords, lat, lon )
 
@@ -26,9 +30,16 @@ const Target = ({ coords, lat, lon, descr }: ITargetProps) => {
 
   const handleClick = () => {
     if(!isAchieve) return null
-    handleModalShow(elements.types.TARGET_POPUP, descr)
+
+    handleSetTargetDescr({descr, img})
+    handleModalShow(elements.types.TARGET_POPUP)
+    handleTargetAchievment(id)
 
   }
+
+  // useEffect(() => {
+
+  // }, [isAchieve])
 
   return (
     <div 
@@ -42,14 +53,14 @@ const Target = ({ coords, lat, lon, descr }: ITargetProps) => {
           )
           :  (
             <>
-              <small>{isAchieve ? '' : 'До цели'}</small>
+              <small>{isAchieve ? '' : ''}</small>
               {
                 isAchieve
                   ? ''
                   : (
                     <>
                       <div>{distance}</div>
-                      <small>метров</small>
+                      {/* <small>метров</small> */}
                     </>
                   )
               }

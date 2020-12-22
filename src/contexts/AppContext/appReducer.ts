@@ -1,8 +1,12 @@
-import { HIDE_MODAL, SHOW_MODAL, net, ui } from "../../types/types"
+import { HIDE_MODAL, SHOW_MODAL, net, ui, IInitialState, IAction, IAppState } from "../../types/types"
 
 const { SET_TARGETS, SET_IDS } = net
 
-const handlers = {
+interface IReduser {
+  [type: string]: (state: IInitialState, payload?: any) => IInitialState
+}
+
+const handlers: IReduser = {
   [SHOW_MODAL]: (state, { payload }) => ({
     ...state,
     isShowModal: true,
@@ -25,17 +29,18 @@ const handlers = {
       ids: payload,
     }
   },
-  [ui.SET_TARGET_TEXT]: (state, { payload }) => {
+  [ui.SET_TARGET_DATA]: (state, { payload }) => {
     return {
       ...state,
-      targetText: payload,
+      targetText: payload.descr,
+      targetImg: payload.img,
     }
   },
 
   DEFAULT: state => state
 }
 
-export default (state, action) => {
+export default (state: IInitialState, action: IAction) => {
   const handle = handlers[action.type] || handlers.DEFAULT
   return handle(state, action)
 }

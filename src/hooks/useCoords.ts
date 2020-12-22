@@ -1,13 +1,19 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import { DB_URL, REFRESH_INTERVAL, _ } from '../constants/config'
 
-window.axi = axios
-window.ax = (val, target) => {
-	return axios.post(`${DB_URL}/${val}.json`, JSON.stringify(target))
-}
+// interface IWindow extends Window {
+// 	axi: any
+// 	ax: any
+// }
 
-let id
+
+// let axi = axios
+// let ax = (val: any, target: any) => {
+// 	return axios.post(`${DB_URL}/${val}.json`, JSON.stringify(target))
+// }
+
+let id: number
 
 // navigator.geolocation.watchPosition = (cb) => {
 // 	let latitude = 53.8928896, longitude = 27.5677184
@@ -18,20 +24,21 @@ let id
 // 	}, 1000)
 // }
 
-export default (who, deps = []) => {
+export default (who: string, deps: any = []) => {
 
 	const [state, setState] = useState({
 		lat: 0,
 		lon: 0,
-	}, [])
+	})
 	
-	const onError = (e) => {
+	const onError = (e: PositionError) => {
 		if (e.code === 1) {
 			alert('Разрешите мне геолокацию')
 		}
 	}
 
-	const onSuccess = (e) => {
+	const onSuccess = (e: Position) => {
+		
 		const coords = {
 			lat: e.coords.latitude,
 			lon: e.coords.longitude,
@@ -39,13 +46,15 @@ export default (who, deps = []) => {
 		setState(coords)
 	}
 
-	const onChangePosition = (e) => {
-		// console.log("TCL: onChangePosition -> e", e.coords)
+	const onChangePosition = (e: Position) => {
 		const coords = {
 			lat: e.coords.latitude,
 			lon: e.coords.longitude,
 		}
+    console.log("TCL ~ file: useCoords.ts ~ line 54 ~ onChangePosition ~ coords", coords.lat + ', ' + coords.lon)
+
 		setState(coords)
+
 		const { latitude, longitude } = e.coords
 		const data = JSON.stringify({ lat: latitude, lon: longitude })
 		// axios.put(`${DB_URL}/${who}.json`, data)
@@ -56,7 +65,7 @@ export default (who, deps = []) => {
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(onSuccess, onError)
 
-		const options = {
+		const options: PositionOptions = {
 			enableHighAccuracy: false,
 			timeout: REFRESH_INTERVAL,
 			maximumAge: 0

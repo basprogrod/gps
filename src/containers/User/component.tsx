@@ -9,9 +9,17 @@ import isAchieveTarget from '../../utils/isAchieveTarget'
 
 import './styles.scss'
 import AppContext from '../../contexts/AppContext/AppContext'
+import { IAppState, TTaget } from '../../types/types'
+
+const targetsMock = [
+  {
+    coords: '56.000000, 51.00000',
+    descr: 'Lol kek cheburek!'
+  }
+]
 
 const User = () => {
-  const { targets, handleGetTargets } = useContext(AppContext)
+  const { targets, handleGetTargets } = useContext(AppContext) as IAppState
   const {lat, lon} = useCoords(USER) // coords of user
   // console.log("TCL: User -> lat, lon", lat, lon) 
   // const [userLat, userLon] = usePosition(ADMIN) // coords of admin
@@ -33,13 +41,18 @@ const User = () => {
        {
          targets.map((target) => {
            return (
-            <Target key={target.coords} coords={target.coords} descr={target.descr} lat={lat} lon={lon} />
+            <Target
+              key={target.coords} 
+              coords={target.coords} 
+              descr={target.descr} 
+              img={target.img}
+              lat={lat} 
+              lon={lon} 
+              id={target.id}
+            />
           )
          })
        }
-      {/* <span>Distance to Target:</span>
-      <div>{distanceUntilTarget} m</div> */}
-      {/* <div>{distance} m</div> */}
     </div>
   )
 }

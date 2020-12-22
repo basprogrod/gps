@@ -11,16 +11,17 @@ import AppState from './contexts/AppContext/AppState';
 import ModalWindow from './containers/ModalWindow/component';
 import { useContext } from 'react';
 import AppContext from './contexts/AppContext/AppContext';
+import { IAppState } from './types/types';
 
-function App() {
-  const context = useContext(AppContext)
+const App = () => {
+  const context = useContext(AppContext) as IAppState
   console.log("TCL: App -> context", context)
 
   const [state, setState] = useState({
     pass: ''
   })
 
-  const handleLogin = (pass) => {
+  const handleLogin = (pass: string) => {
     setState({...state, pass})
   }
 
