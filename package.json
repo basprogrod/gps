@@ -11,6 +11,7 @@
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "axios": "^0.20.0",
+    "mapbox-gl": "^2.0.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

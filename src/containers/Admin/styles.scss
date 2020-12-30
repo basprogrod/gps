@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 375px;
+  // max-width: 375px;
   padding: 0px 10px;
 }
 
@@ -16,4 +16,12 @@
   background-color: rgb(160, 160, 160);
   border-radius: 8px;
 
+}
+
+.mapGL {
+  // height: 60% !important;
+}
+
+#mapGL {
+  // height: 100vh;
 }

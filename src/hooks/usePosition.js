@@ -29,8 +29,8 @@ export default (who) => {
 	}
 
 	useEffect(() => {
-		// getData()
-		// return () => clearInterval(tid)
+		getData()
+		return () => clearInterval(tid)
 	}, [])
 
 

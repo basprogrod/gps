@@ -34,17 +34,17 @@ const App = () => {
           {
             state.pass !== PASS && state.pass !== ADMIN_PASS && (
               <header className="header">
-                {/* <Login pass={state.pass} handleLogin={handleLogin}/> */}
+                <Login pass={state.pass} handleLogin={handleLogin}/>
               </header>
             )
           }
 
           <main className="main">
             {
-              state.pass !== PASS && <User />
+               
             }
             {
-              state.pass === ADMIN_PASS && <Admin />
+              state.pass === ADMIN_PASS ? <Admin /> : <User />
             }
           </main>
       </div>

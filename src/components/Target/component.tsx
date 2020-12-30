@@ -53,14 +53,14 @@ const Target = ({ coords, lat, lon, descr, img, id }: ITargetProps) => {
           )
           :  (
             <>
-              <small>{isAchieve ? '' : ''}</small>
+              <small>{isAchieve ? '' : 'До цели'}</small>
               {
                 isAchieve
                   ? ''
                   : (
                     <>
                       <div>{distance}</div>
-                      {/* <small>метров</small> */}
+                      <small>метров</small>
                     </>
                   )
               }

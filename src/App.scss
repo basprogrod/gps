@@ -6,11 +6,16 @@
 .header {
   height: 75px;
   display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  height: 200px;
 }
 .main {
   display: flex;
+  align-items: center;
+  height: 100%;
   padding-top: 50px;
 }

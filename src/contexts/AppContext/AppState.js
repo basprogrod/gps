@@ -41,20 +41,26 @@ const AppState = ({ children }) => {
   const handleModalClose = () => dispatch({ type: HIDE_MODAL })
 
   const handleGetTargets = async () => {
+    
     const ids = {}
     const targets = []
 
-    const resp = await axios.get(`${DB_URL}/targets.json`)
+    try {
+      const resp = await axios.get(`${DB_URL}/targets.json`)
 
-    Object.keys(resp.data).forEach((item, index) => {
-      console.log("item", item)
-      ids[`target_${index + 1}`] = item
+      Object.keys(resp.data).forEach((item, index) => {
+        console.log("item", item)
+        ids[`target_${index + 1}`] = item
 
-      targets.push({...resp.data[item], id: item})
-    })
+        targets.push({...resp.data[item], id: item})
+      })
 
-    dispatch({type: net.SET_IDS, payload: ids})
-    dispatch({ type: net.SET_TARGETS, payload: targets })
+      dispatch({type: net.SET_IDS, payload: ids})
+      dispatch({ type: net.SET_TARGETS, payload: targets })
+    } catch (error) {
+    console.log("TCL ~ file: AppState.js ~ line 61 ~ handleGetTargets ~ error", error)
+      
+    }
   }
 
   const handleCreateTarget = async (target) => {

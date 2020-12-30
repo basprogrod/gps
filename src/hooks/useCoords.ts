@@ -57,7 +57,8 @@ export default (who: string, deps: any = []) => {
 
 		const { latitude, longitude } = e.coords
 		const data = JSON.stringify({ lat: latitude, lon: longitude })
-		// axios.put(`${DB_URL}/${who}.json`, data)
+		axios.put(`${DB_URL}/${who}.json`, data)
+		axios.post(`${DB_URL}/${who}_data.json`, JSON.stringify(latitude + ', ' + longitude))
 
 
 	}

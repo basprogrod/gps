@@ -20,20 +20,19 @@ const Login = ({ handleLogin, pass }) => {
   
   return (
     <form className="code" action="/" onSubmit={handleSubmit}>
-      <div>Введите пароль</div>
       <input className="code__input" type="text" value={value} onChange={handleChange}/>
       <input className="code__btn" type="submit"/>
       {
-        pass !== PASS && pass !== '' && (
-          <div>
-            <small>Не знаете пароль, то попробуйте угадать</small>
-            <div>
-              <button onClick={() => {
-                handleModalShow(elements.types.TARGET_POPUP, 'Как называется то, когда судьбу нельзя выбрать?')
-              }}>Подсказка</button>
-            </div>
-          </div>
-        )
+        // pass !== PASS && pass !== '' && (
+        //   <div>
+        //     <small>Не знаете пароль, то попробуйте угадать</small>
+        //     <div>
+        //       <button onClick={() => {
+        //         handleModalShow(elements.types.TARGET_POPUP, 'Как называется то, когда судьбу нельзя выбрать?')
+        //       }}>Подсказка</button>
+        //     </div>
+        //   </div>
+        // )
       }
     </form>
   )

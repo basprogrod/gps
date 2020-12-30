@@ -5,7 +5,7 @@ export const REFRESH_INTERVAL = 5000
 export const _ = () => {}
 
 export const PASS = 'пгни'
-export const ADMIN_PASS = 'k'
+export const ADMIN_PASS = '7ab'
 
 export const ADMIN = 'kek'
 
@@ -26,6 +26,6 @@ export const targets = [
   '53.849303, 27.478452',
 ]
 
-export const LIMIT = 45
+export const LIMIT = 5
 export const CLOSELY = 50
 //53.905292, 27.558693
